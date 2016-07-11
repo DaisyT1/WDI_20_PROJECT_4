@@ -1,2 +1,2 @@
 angular
-  .module('project4', []);
+  .module('project4', ['ngResource']);

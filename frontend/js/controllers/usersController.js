@@ -1,13 +1,14 @@
 angular.module('project4')
   .controller('UsersController', UsersController);
 
-  UsersController.$inject = ["$http"]
-  function UsersController($http){
+  UsersController.$inject = ["$http", "User"]
+  function UsersController($http, User){
 
     var self = this;
     this.all = [];
     this.getUsers = getUsers;
-
+    this.hello = '3rgsDhGHZxZ9sB9DQWQfuf';
+    console.log(this.hello)
 
   function getUsers(){
     $http
@@ -17,6 +18,10 @@ angular.module('project4')
       console.log(self.all[0].locations[0])
     });
   }
+
+  // User.query(function(data){
+  //   self.all = data.users;
+  // });
 
   getUsers();
 }

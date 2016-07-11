@@ -46,9 +46,9 @@ function initAutocomplete() {
         scaledSize: new google.maps.Size(25, 25)
       };
 
-      var lat = place.geometry.location.lat();
-      var lng = place.geometry.location.lng();
-           console.log(lat, lng);
+      var latTEST = place.geometry.location.lat();
+      var lngTEST = place.geometry.location.lng();
+           console.log(latTEST, lngTEST);
 
       // Create a marker for each place.
       markers.push(new google.maps.Marker({
@@ -67,5 +67,7 @@ function initAutocomplete() {
     });
     map.fitBounds(bounds);
   });
+
+  
 }
 

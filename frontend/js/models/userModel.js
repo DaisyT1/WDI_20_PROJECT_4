@@ -2,22 +2,16 @@ angular
   .module('project4')
   .factory('User', User);
 
-User.$inject = ['$resource', 'API'];
-function User($resource, API){
+User.$inject = ['$resource'];
+function User($resource){
 
   return $resource(
-    API+'/users/:id', {id: '@id'},
+    'http://localhost:3000/users/:id', {id: '@id'},
     { 'get':       { method: 'GET' },
       'save':      { method: 'POST' },
       'query':     { method: 'GET', isArray: true},
       'remove':    { method: 'DELETE' },
-      'delete':    { method: 'DELETE' },
-      'register':   { 
-        url: API +'/register', 
-        method: "POST" }, 
-      'login': { 
-        url: API + '/login', 
-        method: "POST" } }
+      'delete':    { method: 'DELETE' } }
   );
 }
 

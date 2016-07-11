@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var TrackSchema = mongoose.Schema({
   title: String,
-  spotID: Number,
+  spotID: String,
   comment: String
   
 });

@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var Location = require('../models/location');
 
 var UserSchema = mongoose.Schema({
   username: { type: String, unique: true },
