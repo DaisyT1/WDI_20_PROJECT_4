@@ -1,0 +1,10 @@
+<section ng-controller="TracksController as tracks">
+  <ul>
+   <li ng-repeat="album in tracks.results.albums.items" ng-click="tracks.selectTrack(album.id)">{{album.name}}</li>
+   <li ng-repeat="artists in tracks.results.artists.items" ng-click="tracks.selectTrack(artists.id)">{{artists.name}}</li>
+  </ul>
+
+
+<iframe ng-src="{{getIframeSrc(tracks.eg)}}" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+
+</section>

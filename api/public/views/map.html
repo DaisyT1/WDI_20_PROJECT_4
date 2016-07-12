@@ -1,0 +1,34 @@
+  <section ng-controller="MapsController as maps">
+    <ui-gmap-google-map center="maps.map.center" zoom="maps.map.zoom" options="maps.run.map.options" control="maps.map.control">
+    <ui-gmap-search-box template="searchbox.template" events="searchbox.events"></ui-gmap-search-box>
+     <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
+  </ui-gmap-google-map>
+</section>
+
+<section ng-controller="LocationsController as locations">
+  <h1>Locations</h1>
+
+  <ul id="locations">
+    <li ng-repeat="location in locations.all">
+      <strong>{{location.name}}</strong>-<em> - lat:{{location.lat}}, lng:{{location.lng}}</em>
+    </li>
+  </ul>
+
+  <form class="add-location" ng-submit='locations.addLocation()'>
+    <div>
+      <input type="text" id="new-location-name" placeholder="Loc name" ng-model='locations.newLocation.name'>
+    </div>
+
+    <div>
+      <input type="text" id="new-location-lat" placeholder="lat" ng-model='locations.newLocation.lat'>
+    </div>
+
+    <div>
+      <input type="text" id="new-location-lng" placeholder="lng" ng-model='locations.newLocation.lng'>
+    </div>
+
+    <div>
+      <input type="submit" value="Add Location">
+    </div>
+  </form>
+</section>
