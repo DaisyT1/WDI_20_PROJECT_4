@@ -1,5 +1,5 @@
 angular
-  .module('project4', ['ngResource', 'uiGmapgoogle-maps', 'ui.router'])
+  .module('project4', ['ngResource', 'ngMap', 'ui.router'])
   .config(Router);
 
 Router.$inject = ["$stateProvider", "$urlRouterProvider"];

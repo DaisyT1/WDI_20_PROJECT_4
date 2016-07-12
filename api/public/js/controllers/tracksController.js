@@ -1,13 +1,13 @@
 angular.module('project4')
   .controller('TracksController', TracksController);
 
-  TracksController.$inject = ["$http"]
-  function TracksController($http){
+  TracksController.$inject = ["$http" , "$sce"];
+  function TracksController($http , $sce){
    
     var self = this;
     self.eg = '3rgsDhGHZxZ9sB9DQWQfuf';
 
-         this.selectedTrack = 
+         this.selectedTrack = $sce.trustAsResourceUrl('https://embed.spotify.com/?uri=spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf');
 
          $http({
            method: 'GET',
@@ -27,11 +27,5 @@ angular.module('project4')
              // console.log(id)
 
          }
-
-     function getIframeSrc(SongId) {
-       return 'https://embed.spotify.com/?uri=spotify:user:spotify:playlist:' + SongId;
-       console.log('hello')
-       console.log(self.id)
-     };
 
   }

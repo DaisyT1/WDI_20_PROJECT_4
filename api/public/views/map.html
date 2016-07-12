@@ -1,11 +1,33 @@
-  <section ng-controller="MapsController as maps">
-    <ui-gmap-google-map center="maps.map.center" zoom="maps.map.zoom" options="maps.run.map.options" control="maps.map.control">
-    <ui-gmap-search-box template="searchbox.template" events="searchbox.events"></ui-gmap-search-box>
-     <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
-  </ui-gmap-google-map>
-</section>
-
 <section ng-controller="LocationsController as locations">
+
+<!-- <ng-map center="[40.74, -74.18]" class="mapCanvas">
+  <input places-auto-complete
+      on-place-changed="locations.placeChanged()" />
+  <div ng-show="vm.place">
+      Address = {{vm.place.formatted_address}} <br/>
+      Location: {{vm.place.geometry.location}}<br/>
+    </div>
+</ng-map> -->
+
+<!--   Auto Complete Type:
+  <select ng-model="vm.types">
+    <option value="['geocode']">Geodode</option>
+    <option value="['establishment']">Establishment</option>
+    <option value="['address']">Address</option>
+  </select><br/> -->
+
+  Enter an address: <br/>
+  <input places-auto-complete size=80 ng-model="vm.address" on-place-changed="vm.placeChanged()"> <br/>
+  <div ng-show="vm.place">
+    Address = {{vm.place.formatted_address}} <br/>
+    Location: {{vm.place.geometry.location}}<br/>
+  </div>
+  address : {{vm.address}}
+  <ng-map class="mapCanvas"></ng-map>
+
+
+
+
   <h1>Locations</h1>
 
   <ul id="locations">

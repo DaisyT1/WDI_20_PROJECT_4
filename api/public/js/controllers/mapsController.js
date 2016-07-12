@@ -1,64 +1,28 @@
 angular.module('project4')
   .controller('MapsController', MapsController);
 
-  MapsController.$inject = ["uiGmapGoogleMapApi", '$scope']
-  function MapsController(uiGmapGoogleMapApi, $scope){
+  MapsController.$inject = ['ngMap', '$scope']
+  function MapsController(ngMap, $scope){
 
-   var self = this;
-             // initial map data
-             self.map = {
-                 center: { 
-                   latitude: 51.5073509, 
-                   longitude: -0.12775829999998223 
-                 },
-                 zoom: 12, 
-                 control:{},
-                 searchbox: { 
-                          template:'searchbox.tpl.html', 
-                          events:{
-                            places_changed: function (searchBox) {
+    // var self = this;
+    
 
-                            }
-                          }
-                        },
-                 options: 
-                 {
-                   scrollwheel: true
-                 }
-      };
+    // self.types = "['establishment']";
+    //   self.placeChanged = function() {
+    //     self.place = this.getPlace();
+    //     console.log('location', self.place.geometry.location);
+    //     self.map.setCenter(self.place.geometry.location);
+    //   }
 
-     var events = {
-              place_changed:function (searchBox) {
-                  var place = searchBox.getPlace();
-                  if (!place || place == 'undefined') {
-                      console.log('no place data :(');
-                      return;
-                  }
-
-                  // refresh the map
-                  $scope.map = {
-                      center:{
-                          latitude:place[0].geometry.location.lat(),
-                          longitude:place[0].geometry.location.lng()
-                      },
-                      zoom:18
-                  };
-
-                  // refresh the marker
-                  $scope.marker = {
-                      id:0,
-                      options:{ draggable:false },
-                      coords:{
-                          latitude:place[0].geometry.location.lat(),
-                          longitude:place[0].geometry.location.lng()
-                      }
-                  };
-
-              }
-          };
-
-          $scope.searchbox = {events: events};
-  }
-
-
-
+        var vm = this;
+        vm.placeChanged = function() {
+          // console.log("RUnning")
+          vm.place = this.getPlace();
+          console.log(vm.place)
+          console.log('location', vm.place.geometry.location);
+          vm.map.setCenter(vm.place.geometry.location);
+        }
+        NgMap.getMap().then(function(map) {
+          vm.map = map;
+        });
+ } 
