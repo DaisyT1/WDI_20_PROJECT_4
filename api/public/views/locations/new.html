@@ -15,8 +15,8 @@
 <input type="submit" value="Add" ng-click="tracks.searchSpotify()">
 
   <ul>
-   <li ng-repeat="x in tracks.selectedArtist.artists.items" ng-click="tracks.selectTrack(x.id)">
-   {{x.name}}
+   <li ng-repeat="x in tracks.selectedArtist.tracks.items" ng-click="tracks.selectTrack(x.id)">
+   {{x.name}} by {{x.artists[0].name}}
   </ul>
 
 </section>

@@ -14,8 +14,9 @@ angular.module('project4')
     // https://api.spotify.com/v1/search?q=beyonce&type=album,track,artist
 
 function searchSpotify(){
-  Spotify.search(self.artistName, 'artist').then(function (data) {
+  Spotify.search(self.artistName, 'track').then(function (data) {
     self.selectedArtist = data;
+    console.log(data)
   });
 }
 

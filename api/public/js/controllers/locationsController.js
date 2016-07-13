@@ -15,7 +15,6 @@ function LocationsController(NgMap, Location){
     self.location.address = self.address
 
     Location.save({ location: self.location }), function(response){
-      console.log(response)
       self.location = null;
     }
   }
