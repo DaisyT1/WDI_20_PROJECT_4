@@ -10,10 +10,6 @@ function Router($stateProvider, $urlRouterProvider) {
     url: "/",
     templateUrl: "../views/home.html"
   })
-  .state('map', {
-    url: "/map",
-    templateUrl: "../views/map.html"
-  }) 
   .state('songs', {
     url: "/songs",
     templateUrl: "../views/songs.html"
@@ -21,6 +17,16 @@ function Router($stateProvider, $urlRouterProvider) {
   .state('users', {
     url: "/users",
     templateUrl: "../views/users.html"
+  })
+  .state('locations', {
+    url: "/locations",
+    templateUrl: "../views/locations/index.html",
+    controller: "LocationsController as vm"
+  }) 
+  .state('location', {
+    url: "/locations/new",
+    templateUrl: "../views/locations/new.html",
+    controller: "LocationsController as vm"
   })
   .state('login', {
     url: "/login",

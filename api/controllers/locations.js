@@ -2,7 +2,8 @@ var User = require('../models/user');
 var Location = require('../models/location');
 
 function locationsCreate(req, res) {
- var location = new Location(req.body);
+ var location = new Location(req.body.location);
+  console.log(location)
    location.save(function(err,location){
      if (err) return res.status(500).json({ error: 'Error'});
        res.json(location)
@@ -10,9 +11,9 @@ function locationsCreate(req, res) {
 }
 
 function locationsIndex(req, res) {
-  Location.find(function(err, locations) {
+  Location.find({}, function(err, locations) {
     if(err) return res.status(500).json({ message: err });
-    return res.status(200).json({ locations: locations });
+    res.status(200).send(locations);
   });
 }
 

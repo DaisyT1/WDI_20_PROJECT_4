@@ -1,34 +1,37 @@
 angular.module('project4')
   .controller('LocationsController', LocationsController);
 
-  LocationsController.$inject = ["$http"]
-  function LocationsController($http){
+LocationsController.$inject = ['NgMap', 'Location']
+function LocationsController(NgMap, Location){
 
-    var self = this;
-    this.all = [];
-    this.getLocations = getLocations;
-    this.newLocation = {};
-    this.addLocation = addLocation;
-    this.location = 
+  var self = this;
 
-  function getLocations(){
-    $http
-    .get("http://localhost:3000/locations").then(function(response){
-    self.all = response.data.locations;
-      console.log(self)
-    });
+  self.all          = Location.query();
+  self.location     = null;
+  self.addLocation  = addLocation;
+  self.placeChanged = placeChanged;
+
+  function addLocation() {
+    self.location.address = self.address
+
+    Location.save({ location: self.location }), function(response){
+      console.log(response)
+      self.location = null;
+    }
   }
 
-  function addLocation(){
-    this.newLocation.lat = 
-    this.newLocation.lng = 
-
-    $http.post("http://localhost:3000/locations" , this.newLocation).then(function(response){
-      self.all.push(response.data.location);
-      self.newLocation = {};
-      console.log(self)
-    });
+  function placeChanged() {
+    console.log("Running");
+    self.place = this.getPlace();
+    self.map.setCenter(self.place.geometry.location);
   }
 
-  getLocations();
-}
+  NgMap.getMap().then(function(map) {
+    self.map = map;
+  });
+
+  function addSongToLocation(){
+
+  }
+
+} 

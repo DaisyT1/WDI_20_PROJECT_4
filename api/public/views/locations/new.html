@@ -1,0 +1,22 @@
+<h1>New Location</h1>
+
+<form>
+  <input type="text" name="name" placeholder="Name" ng-model="vm.location.name">
+  <input places-auto-complete size=80 ng-model="vm.address" on-place-changed="vm.placeChanged()">
+
+  <input type="submit" value="Add" ng-click="vm.addLocation()">
+</form>
+<br>
+<ng-map center="[51.5073509, -0.12775829999998223]" zoom="12" class="mapCanvas"></ng-map>
+
+<section ng-controller="TracksController as tracks">
+
+<input type="text" name="query" ng-model=tracks.artistName>
+<input type="submit" value="Add" ng-click="tracks.searchSpotify()">
+
+  <ul>
+   <li ng-repeat="x in tracks.selectedArtist.artists.items" ng-click="tracks.selectTrack(x.id)">
+   {{x.name}}
+  </ul>
+
+</section>

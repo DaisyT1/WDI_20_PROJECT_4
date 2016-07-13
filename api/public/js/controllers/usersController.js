@@ -38,25 +38,27 @@ angular.module('project4')
     var user_id=getCookie("user_id");
     if (user_id!="" && user_id != null) {
           // alert("Yo " + user_id);
-      self.newUser = user_id;  
-    $http.post("http://localhost:3000/users" , self.newUser).then(function(response){
-        self.newUser.push(newUser);
-        self.newUser = {};
-        console.log(self)
-      });
-    } 
-  }
-
-  function checkIfAlreadyAUser(id){
-    if (id){
+      return user_id;
+      console.log(user_id)
+    } else {
 
     }
   }
+
+  // function checkIfAlreadyAUser(id){
+  //   if (id IS NOT IN THE DB){
+  //   $http.post("http://localhost:3000/users" , self.SOMETHING).then(function(response){
+  //       self.newUser.push(SOMETHING);
+  //       self.newUser = {};
+  //       console.log(self)
+  //     });
+  //   }
+  // }
 
   function currentUser(){
 
   }
 
-  checkCookie()
+  // checkCookie()
   getUsers();
 }

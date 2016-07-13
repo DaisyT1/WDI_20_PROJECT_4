@@ -1,13 +1,11 @@
 <section ng-controller="TracksController as tracks">
-  <ul>
-   <li ng-repeat="album in tracks.results.albums.items" ng-click="tracks.selectTrack(album.id)">
-   {{album.name}}
-   <button ng-class="select">Select</button>
-   <button ng-class="play" ng-click="tracks.playThirty()">Play</button>
-   </li>
-    <li ng-repeat="artists in tracks.results.artists.items" ng-click="tracks.selectTrack(artists.id)">{{artists.name}}</li>
-  </ul>
-  <audio controls src="http://d318706lgtcm8e.cloudfront.net/mp3-preview/4c63a3d4eaf7f8f86cfdb8bf46ef3974f4092357" frameborder="0" allowtransparency="true"></audio>
 
- <iframe src="{{tracks.currentProject}}">
+<input type="text" name="query" ng-model=tracks.artistName>
+<input type="submit" value="Add" ng-click="tracks.searchSpotify()">
+
+  <ul>
+   <li ng-repeat="x in tracks.selectedArtist.artists.items" ng-click="tracks.selectTrack(x.id)">
+   {{x.name}}
+  </ul>
+
 </section>

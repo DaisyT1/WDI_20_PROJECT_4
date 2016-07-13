@@ -2,8 +2,7 @@ var mongoose = require('mongoose');
 
 var LocationSchema = mongoose.Schema({
   name: String,
-  lat: Number,
-  lng: Number,
+  address: String,
   song: [{type: mongoose.Schema.ObjectId, ref: "Track"}]
   
 });
