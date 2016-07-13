@@ -11,10 +11,38 @@ function LocationsController(NgMap, Location){
   self.addLocation  = addLocation;
   self.placeChanged = placeChanged;
 
+  var vm = this;
+
+  NgMap.getMap().then(function(map) {
+    vm.map = map;
+  });
+
+
+  vm.clicked = function() {
+      alert('Clicked a link inside infoWindow');
+    };
+
+    vm.shops = [
+      {id:'foo', name: 'FOO SHOP', position:[41,-87]},
+      {id:'bar', name: 'BAR SHOP', position:[42,-86]}
+    ];
+    vm.shop = vm.shops[0];
+
+    vm.showDetail = function(e, shop) {
+      vm.shop = shop;
+      vm.map.showInfoWindow('infoWindow', shop.id);
+    };
+
+    vm.hideDetail = function() {
+      vm.map.hideInfoWindow('infoWindow');
+    };
+
+
   function addLocation() {
     self.location.address = self.address
 
     Location.save({ location: self.location }), function(response){
+      console.log(response)
       self.location = null;
     }
   }

@@ -11,7 +11,7 @@ function locationsCreate(req, res) {
 }
 
 function locationsIndex(req, res) {
-  Location.find({}, function(err, locations) {
+  Location.find({}).populate("song").exec(function(err, locations) {
     if(err) return res.status(500).json({ message: err });
     res.status(200).send(locations);
   });

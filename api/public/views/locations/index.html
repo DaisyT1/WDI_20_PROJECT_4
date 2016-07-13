@@ -1,13 +1,23 @@
 <h1>Locations</h1>
 
-<ng-map center="[51.5073509, -0.12775829999998223]" zoom="8" class="mapCanvas" zoom-to-include-markers="true">
-  <marker ng-repeat="location in vm.all" position="pos: {{ location.address }}"></marker>
-</ng-map>
+<!-- <ng-map center="[51.5073509, -0.12775829999998223]" zoom="8" class="mapCanvas" zoom-to-include-markers="true">
+  <marker ng-repeat="location in vm.all" position="pos: {{ location.address }}"></marker> -->
+
+  <map center="[51.5073509, -0.12775829999998223]" zoom="8" class="mapCanvas" zoom-to-include-markers="true">
+        <marker ng-repeat="location in vm.all" position="pos: {{ location.address }}" on-click="showInfoWindow(event, 'marker-info')">
+        <info-window id="marker-info">
+          <h4>{{location.song}}</h4>
+        </info-window>
+        </marker>
+      </map>
+
+
+
 
 <ul id="locations">
   <li ng-repeat="location in vm.all">
     <ul>
-      <li>{{ location.name }}</li>
+      <li>{{ location.song.title }}</li>
       <li>{{ location.address }}</li>
     </ul>
   </li>

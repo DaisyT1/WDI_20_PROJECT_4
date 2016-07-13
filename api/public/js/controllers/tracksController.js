@@ -1,8 +1,8 @@
 angular.module('project4')
   .controller('TracksController', TracksController);
 
-  TracksController.$inject = ["$http" , "$sce", "Spotify"];
-  function TracksController($http , $sce, Spotify){
+  TracksController.$inject = ["$http" , "$sce", "Spotify", "Track"];
+  function TracksController($http , $sce, Spotify, Track){
    
     var self = this;
     this.searchSpotify = searchSpotify;
@@ -10,27 +10,35 @@ angular.module('project4')
     this.artistName = "";
     this.selectedArtist = '';
     this.selectTrack = selectTrack;
+    this.selectedId = null;
 
-    // https://api.spotify.com/v1/search?q=beyonce&type=album,track,artist
+  function addSong() {
+    self.tracks.spotId = self.selectedId;
 
-function searchSpotify(){
-  Spotify.search(self.artistName, 'track').then(function (data) {
-    self.selectedArtist = data;
-    console.log(data)
-  });
-}
+    Track.save({ tracks: self.track }), function(response){
+      self.selectedId = null;
+    }
+  }
 
-function createPlaylist(){
-  Spotify
-    .createPlaylist('1176458919', { name: 'Awesome Mix Vol. 1' })
-    .then(function (data) {
-    console.log('playlist created');
-  });
-}
+  function searchSpotify(){
+    Spotify.search(self.artistName, 'track').then(function (data) {
+      self.selectedArtist = data;
+      console.log(data)
+    });
+  }
 
-function selectTrack(id){
-  console.log(id)
-}
+  function createPlaylist(){
+    Spotify
+      .createPlaylist('1176458919', { name: 'Awesome Mix Vol. 1' })
+      .then(function (data) {
+      console.log('playlist created');
+    });
+  }
 
-  // searchSpotify()
+  function selectTrack(id){
+    self.selectedId = id
+    console.log(id)
+    console.log(self.selectedId)
+  }
+
 }
