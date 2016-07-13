@@ -1,5 +1,5 @@
 angular
-  .module('project4', ['ngResource', 'ngMap', 'ui.router'])
+  .module('project4', ['ngResource', 'ngMap', 'ui.router', 'spotify'])
   .config(Router);
 
 Router.$inject = ["$stateProvider", "$urlRouterProvider"];

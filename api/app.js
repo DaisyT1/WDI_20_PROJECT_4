@@ -66,8 +66,6 @@ app.get("/callback" , function(req,res){
     console.log("cookies" , req.cookies);
     var storedState = req.cookies ? req.cookies[stateKey] : null;
 
-    console.log("stored state" , storedState);
-
     if (state === null || state !== storedState) {
         res.redirect('/#' +
           querystring.stringify({
@@ -94,7 +92,20 @@ app.get("/callback" , function(req,res){
             res.cookie("auth_token", body.access_token);
             res.cookie("refresh_token", body.refresh_token);
 
-            res.redirect("http://localhost:3000/");
+            var options = {
+              url: 'https://api.spotify.com/v1/me',
+              headers: {
+                'Authorization': 'Bearer ' + body.access_token
+              },
+              json: true
+            };
+
+            request.get(options , function(error , response, body){
+
+                res.cookie("user_id" , body.id);
+
+                res.redirect("http://localhost:3000/");
+            });
            
           } else {
             res.redirect('/#' +
@@ -103,20 +114,10 @@ app.get("/callback" , function(req,res){
               }));
           }
         });
+
       }
 
 })
-
-
-// app.get('/#/login', function(req, res) {
-// var scopes = 'user-read-private user-read-email';
-// res.redirect('https://accounts.spotify.com/authorize' + 
-//   '?response_type=code' +
-//   '&client_id=' + fbc794752036440baf1be8e0b9a40f30 +
-//   (scopes ? '&scope=' + encodeURIComponent(scopes) : '') +
-//   '&redirect_uri=' + encodeURIComponent(redirect_uri));
-// console.log(res)
-// });
 
 /**
  * Generates a random string containing numbers and letters
@@ -132,6 +133,5 @@ var generateRandomString = function(length) {
   }
   return text;
 };
-
 
 app.listen(3000);

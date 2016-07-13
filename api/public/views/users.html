@@ -2,8 +2,8 @@
   <h1>Users</h1>
   <ul id="users">
     <li ng-repeat="user in users.all">
-      <strong>{{user.username}}</strong>-<em> - lat:{{user.current_dest.lat}}, lng:{{user.current_dest.lng}}</em>
-      <p>{{user.locations[0]}}</p>
+      <strong>{{user.username}}</strong>
+      <p>{{user.locations}}</p>
     </li>
   </ul>
 </section>

@@ -9,6 +9,7 @@ angular.module('project4')
     this.getLocations = getLocations;
     this.newLocation = {};
     this.addLocation = addLocation;
+    this.location = 
 
   function getLocations(){
     $http
@@ -19,13 +20,15 @@ angular.module('project4')
   }
 
   function addLocation(){
+    this.newLocation.lat = 
+    this.newLocation.lng = 
+
     $http.post("http://localhost:3000/locations" , this.newLocation).then(function(response){
       self.all.push(response.data.location);
       self.newLocation = {};
       console.log(self)
     });
   }
-
 
   getLocations();
 }

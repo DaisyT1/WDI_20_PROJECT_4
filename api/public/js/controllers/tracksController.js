@@ -1,13 +1,13 @@
 angular.module('project4')
   .controller('TracksController', TracksController);
 
-  TracksController.$inject = ["$http" , "$sce"];
-  function TracksController($http , $sce){
+  TracksController.$inject = ["$http" , "$sce", "Spotify"];
+  function TracksController($http , $sce, Spotify){
    
     var self = this;
-    self.eg = '3rgsDhGHZxZ9sB9DQWQfuf';
+    this.playThirty = playThirty;
+    this.createPlaylist  = createPlaylist;
 
-         this.selectedTrack = $sce.trustAsResourceUrl('https://embed.spotify.com/?uri=spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf');
 
          $http({
            method: 'GET',
@@ -15,17 +15,24 @@ angular.module('project4')
          }).then(function successCallback(response) {
 
              self.results = response.data;
-             // console.log(self.results);
+             // console.log(response.data.tracks.items.preview_url);
 
            }, function errorCallback(response) {
                // console.log(response);
            });
-
-         this.selectTrack = function(id) {
-
-             this.selectedTrack = id;
-             // console.log(id)
-
-         }
-
+        
+  function playThirty(){
+    console.log('playThirty good to go')
+  Spotify
+    .getAlbum('0sNOF9WDwhWunNAHPD3Baj').then(function (data) {
+    console.log(data);
+  });
+}
+    function createPlaylist(){
+      Spotify
+        .createPlaylist('1176458919', { name: 'Awesome Mix Vol. 1' })
+        .then(function (data) {
+        console.log('playlist created');
+      });
+    }
   }
