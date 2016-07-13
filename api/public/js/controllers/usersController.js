@@ -37,7 +37,7 @@ angular.module('project4')
   function checkCookie() {
     var user_id=getCookie("user_id");
     if (user_id!="" && user_id != null) {
-          alert("Yo " + user_id);
+          // alert("Yo " + user_id);
       self.newUser = user_id;  
     $http.post("http://localhost:3000/users" , self.newUser).then(function(response){
         self.newUser.push(newUser);

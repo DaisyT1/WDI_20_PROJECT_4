@@ -27,9 +27,11 @@
     <ng-map center="[51.5073509, -0.12775829999998223]" zoom="12" class="mapCanvas" zoom-to-include-markers="true">
       <marker ng-repeat="location in locations.all"
             position="pos: {{location.lat}}" title="pos: {{location.lng}}"></marker>
-    <info-window id="window">
+    <info-window id="foo-iw">
             <div ng-non-bindable="">
-              id: hello<br/>
+              <!-- id: {{vm.shop.id}}<br/> -->
+          
+              <a href="#" ng-click="vm.clicked()">Click Here</a>
             </div>
           </info-window>
     </ng-map>
@@ -62,3 +64,4 @@
       </div>
     </form>
 
+</section>
