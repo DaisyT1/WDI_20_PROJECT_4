@@ -1,3 +1,63 @@
+html{   
+  width: 100%;
+}
+
+body, .ng-scope{
+  min-height: 100%;
+  width: 100%;
+}
+
+h1, h2, h3, h4, h5, p, button, a, input.btn {
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.main{
+  background-image: url('./images/brandsound.png');
+  height: 280px;
+  margin-top: -70px;
+}
+
 .center{
   text-align: center;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.top {
+  margin-top: 100px;
+}
+
+.selected {
+  border: 2px red solid;
+}
+
+.mapCanvas {
+  height: 400px;
+}
+
+.text-card{
+  text-overflow:ellipsis;
+}
+
+.card-text {
+  padding-bottom: 10px;
+}
+
+.card-block {
+  height: 50px;
+}
+
+.loginButton{
+  height: 35px;
+  width: 200px;
+}
+
+.brand{
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.selected-class-name {
+ border: 2px black solid;
+ margin: 0;
 }

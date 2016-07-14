@@ -34,16 +34,6 @@ angular.module('project4')
     console.log(self.selectedId)
   }
 
-  function saveTrack(id){
-    self.selectedId = id
-  //   self.tracks.spotID = self.selectedId;
-  // consolelog(self.selectedId + "sjjsjsdhsjhdkjsajkd")
-    // Track.save({ tracks: self.track}), function(response){
-    //   console.log(response)
-    //   self.selectedId = null;
-    // }
-  }
-
   function createPlaylist(){
    Spotify
      .createPlaylist('USER-ID', { name: 'Awesome Mix Vol. 1' })

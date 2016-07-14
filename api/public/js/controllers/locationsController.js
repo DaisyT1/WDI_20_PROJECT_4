@@ -23,18 +23,13 @@ function LocationsController(NgMap, LocationResource, Track , $sce){
 
   function locationFound() {
 
+    var bounds = vm.map.getBounds();
+    var ne = bounds.getNorthEast(); // LatLng of the north-east corner
+    var sw = bounds.getSouthWest(); // LatLng of the south-west corder
 
-
-      var bounds = vm.map.getBounds();
-      var ne = bounds.getNorthEast(); // LatLng of the north-east corner
-      var sw = bounds.getSouthWest(); // LatLng of the south-west corder
-
-      self.all = LocationResource.query({top:ne.lat() , bottom: sw.lat() , left:sw.lng() , right:ne.lng()} , function(){
-
-       self.getPlaylistURL();
-
-      });
-
+    self.all = LocationResource.query({top:ne.lat() , bottom: sw.lat() , left:sw.lng() , right:ne.lng()} , function(){
+     self.getPlaylistURL();
+    });
   }
 
   function addLocation() {
@@ -46,17 +41,12 @@ function LocationsController(NgMap, LocationResource, Track , $sce){
 
   self.getPlaylistURL = function() {
 
-      var url = "https://embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE";
-
+    var url = "https://embed.spotify.com/?uri=spotify:trackset:SET";
       angular.forEach(self.all , function(item, index){ 
-
-          if(item.song)
-            url += item.song.spotID + ",";
-
-      });
-
-      self.playlistURL = url;
-
+        if(item.song)
+        url += item.song.spotID + ",";
+    });
+    self.playlistURL = url;
   }
 
   function placeChanged() {

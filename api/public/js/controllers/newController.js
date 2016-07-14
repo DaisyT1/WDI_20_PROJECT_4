@@ -4,39 +4,39 @@ angular.module('project4')
 
 NewController.$inject = ['NgMap', 'LocationResource' ,'Spotify'];
 
-function NewController(NgMap, LocationResource , Spotify) {
-
+  function NewController(NgMap, LocationResource , Spotify) {
 
     var self = this;
 
     self.newLocation = new LocationResource();
-    self.autocomplete = {
-      types: ['geocode']
-    }
+    self.autocomplete = { types: ['geocode'] }
+    self.selectedSong = 0;
 
-    self.placeChanged = function() {
+  self.songClicked = function($index) {
+    self.selectedSong = $index;
+  }
 
-          var place = this.getPlace();
+  self.placeChanged = function() {
 
-          console.log('location', place.geometry.location);
+        var place = this.getPlace();
 
-          self.newLocation.location = {
-            lat: place.geometry.location.lat(),
-            lng: place.geometry.location.lng()
-          } 
+        console.log('location', place.geometry.location);
 
-    }
+        self.newLocation.location = {
+          lat: place.geometry.location.lat(),
+          lng: place.geometry.location.lng()
+      } 
+  }
 
-    self.saveLocation = function() {
+  self.saveLocation = function() {
 
-        self.newLocation.$save(function(){
+      self.newLocation.$save(function(){
 
-            console.log(self.newLocation);
-            console.log('location saved');
+          console.log(self.newLocation);
+          console.log('location saved');
 
-        });
-
-    }
+      });
+  }
 
     this.searchSpotify = function(){
       Spotify.search(self.artistName, 'track').then(function (data) {
@@ -45,11 +45,10 @@ function NewController(NgMap, LocationResource , Spotify) {
     }
 
     this.selectTrack = function(track){
-
+        console.log(track)
       self.newLocation.song = {
         spotID : track.id
       }
+      console.log("selected");
     }
-
-
-}
+} //END

@@ -1,30 +1,31 @@
-<h1>New Location</h1>
-
-<div class="col-md-8">
-  <form ng-submit="controller.saveLocation()">
-
-    <input class="form-control" type="text" name="name" placeholder="Name" ng-model="controller.newLocation.name">
-    <input class="form-control" places-auto-complete size=80  on-place-changed="controller.placeChanged()" types="{{controller.autocomplete.types}}">
-    <input class="btn" type="submit" value="Save">
-
-  </form>
-</div>
-
-<div class="col-md-12">
-  <ng-map center="[51.5073509, -0.12775829999998223]" zoom="12" class="mapCanvas"></ng-map>
-</div>
+<h2>Add a track</h2>
 
   <p>{{vm.location.artistName}}</p>
-  <div class="col-md-8">
-    <input class="form-control" type="text" name="query" ng-model=controller.artistName>
-    <input class="btn" type="submit" value="Search" ng-click="controller.searchSpotify()">
-  </div>
-  <div class="col-md-12">
-    <ul>
-      <form>
-       <li ng-repeat="track in controller.selectedArtist.tracks.items" ng-click="controller.selectTrack(track)">
-        <p>{{track.name}} by {{track.artists[0].name}}</p>
-      </li>
-    </form>
-  </ul>
+    <div class="col-md-8">
+      <input class="form-control" type="text" name="query" ng-model="controller.artistName" placeholder="Search spotify by artist, song or album">
+      <input class="btn" type="submit" value="Search" ng-click="controller.searchSpotify(); goCats=true">
+    </div>
+  <div class="col-md-12"></div>
+
+<div class="col-md-4 lastChild" ng-repeat="track in controller.selectedArtist.tracks.items" ng-click="controller.songClicked($index)">
+  <span ng-click="controller.selectTrack(track)" ng-show="goCats">
+    <img ng-src="{{track.album.images[1].url}}" ng-class="{ 'selected-class-name' : $index == controller.selectedSong }" >
+      <div class="card-block">
+       <span class="card-text">{{track.name}} by {{track.artists[0].name}}</span>
+     </div>
+  </span>
+</div>
+<div class="col-md-12"></div>
+<div class="col-md-6" ng-hide="message">
+  <ng-map center="[51.5073509, -0.12775829999998223]" zoom="12" class="mapCanvas"></ng-map>
+</div>
+<div class="col-md-6">
+  <form ng-submit="controller.saveLocation()" ng-show="goCats">
+    <input class="form-control" type="text" name="name" placeholder="Why this place?" ng-model="controller.newLocation.name">
+    <input class="form-control" places-auto-complete size=80  on-place-changed="controller.placeChanged()" types="{{controller.autocomplete.types}}">
+      <input class="btn" type="submit" value="Save" ng-click="goCats=false ; message=true">
+  </form>
+</div>
+<div ng-show="message" class="col-md-12">
+<h3 >Song has been added</h3>
 </div>

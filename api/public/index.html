@@ -31,7 +31,9 @@
 
   <!-- Stylesheets -->
   <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <link rel="stylesheet" type="text/css" href="./css/images/brandsound.png">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,200' rel='stylesheet' type='text/css'>
 </head>
 <body>
   <span ng-controller='UsersController as main'>
@@ -44,13 +46,11 @@
          <span class="icon-bar"></span>
          <span class="icon-bar"></span>
        </button>
-       <a class="navbar-brand" href="/#/">SET</a>
+       <a class="navbar-brand brand" href="/#/">S E T</a>
      </div>
      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
        <ul class="nav navbar-nav navbar-right">
          <li><a ui-sref='home'>Home</a></li>
-         <li><a ui-sref='users'>Users</a></li>
-         <li><a ui-sref='songs'>Songs</a></li>
          <li><a ui-sref='locations'>Find songs</a></li>
          <li><a ui-sref="location">Add a song</a></li>
        </ul>
@@ -61,6 +61,5 @@
   <div class="container">
     <main ui-view></main>
   </div>
-
 </body>
 </html>
