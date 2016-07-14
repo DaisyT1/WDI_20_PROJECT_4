@@ -1,24 +1,26 @@
 <h1>Locations</h1>
 
-<!-- <ng-map center="[51.5073509, -0.12775829999998223]" zoom="8" class="mapCanvas" zoom-to-include-markers="true">
-  <marker ng-repeat="location in vm.all" position="pos: {{ location.address }}"></marker> -->
-
+<div class="col-md-12">
   <map center="[51.5073509, -0.12775829999998223]" zoom="8" class="mapCanvas" zoom-to-include-markers="true">
         <marker ng-repeat="location in vm.all" position="pos: {{ location.address }}" on-click="showInfoWindow(event, 'marker-info')">
         <info-window id="marker-info">
-          <h4>{{location.song}}</h4>
-        </info-window>
-        </marker>
-      </map>
-
-
-
-
-<ul id="locations">
-  <li ng-repeat="location in vm.all">
-    <ul>
-      <li>{{ location.song.title }}</li>
-      <li>{{ location.address }}</li>
-    </ul>
-  </li>
-</ul>
+          <div id="marker-info"
+          <h4>{{location.song[0]}}</h4>
+          <div>
+            <img src="https://i.scdn.co/image/c40404d1bf7a9e33c137c67a521edd61ebdd58f7">
+          </div>
+        </div>
+      </info-window>
+      </marker>
+    </map>
+  </div>
+<div>
+  <ul id="locations">
+    <li ng-repeat="location in vm.all">
+      <ul>
+        <li>{{ location.name }}</li>
+        <li><a ng-href="https://open.spotify.com/track/{{location.song[0].spotID}}" target="_blank">Play on spotify</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>

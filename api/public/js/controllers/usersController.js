@@ -37,7 +37,7 @@ angular.module('project4')
   function checkCookie() {
     var user_id=getCookie("user_id");
     if (user_id!="" && user_id != null) {
-          // alert("Yo " + user_id);
+          alert("Yo " + user_id);
       return user_id;
       console.log(user_id)
     } else {

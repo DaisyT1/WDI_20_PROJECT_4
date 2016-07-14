@@ -1,8 +1,8 @@
 angular.module('project4')
   .controller('LocationsController', LocationsController);
 
-LocationsController.$inject = ['NgMap', 'Location']
-function LocationsController(NgMap, Location){
+LocationsController.$inject = ['NgMap', 'Location', 'Track']
+function LocationsController(NgMap, Location, Track){
 
   var self = this;
 
@@ -10,6 +10,9 @@ function LocationsController(NgMap, Location){
   self.location     = null;
   self.addLocation  = addLocation;
   self.placeChanged = placeChanged;
+  self.selectedSongId = null;
+
+
 
   var vm = this;
 
@@ -39,8 +42,9 @@ function LocationsController(NgMap, Location){
 
 
   function addLocation() {
+    self.location.testID = self.selectedSongId; 
     self.location.address = self.address
-
+    // self.location.song
     Location.save({ location: self.location }), function(response){
       console.log(response)
       self.location = null;
@@ -57,8 +61,10 @@ function LocationsController(NgMap, Location){
     self.map = map;
   });
 
-  function addSongToLocation(){
-
+  vm.addSongToLocation = function(id){
+    self.selectedSongId = id;
+    console.log("THE ID IS:")
+    console.log(self.selectedSongId)
   }
 
 } 

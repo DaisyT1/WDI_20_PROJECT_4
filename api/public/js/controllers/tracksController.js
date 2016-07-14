@@ -27,18 +27,17 @@ angular.module('project4')
     });
   }
 
-  function createPlaylist(){
-    Spotify
-      .createPlaylist('1176458919', { name: 'Awesome Mix Vol. 1' })
-      .then(function (data) {
-      console.log('playlist created');
-    });
-  }
-
   function selectTrack(id){
     self.selectedId = id
     console.log(id)
     console.log(self.selectedId)
   }
 
+  function createPlaylist(){
+   Spotify
+     .createPlaylist('USER-ID', { name: 'Awesome Mix Vol. 1' })
+     .then(function (data) {
+      console.log('playlist created');
+    });
+  }
 }

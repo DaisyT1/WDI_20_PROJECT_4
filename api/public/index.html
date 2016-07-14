@@ -14,6 +14,8 @@
   <script src="/bower_components/ngmap/build/scripts/ng-map.min.js"></script>
   <script src="/bower_components/angular-spotify/dist/angular-spotify.min.js"></script>
   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBxM36DxD-TmmCuWMML0UXBVSirOUkF42Q&libraries=places"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
 
   <!-- Internal Files -->
   <script src="./js/app.js"></script>
@@ -28,17 +30,36 @@
 
   <!-- Stylesheets -->
   <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 </head>
 <body>
-  <section ng-controller='UsersController as main'>
-    <nav class="tabs">
-      <a ui-sref='home'>Home</a>
-      <a ui-sref='users'>Users</a>
-      <a ui-sref='songs'>Songs</a>
-      <a ui-sref='locations'>Locations</a>
-      <a ui-sref="location">New Location</a>
+  <span ng-controller='UsersController as main'>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+     <div class="navbar-header">
+       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+         <span class="sr-only">Toggle navigation</span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="/#/">SET</a>
+     </div>
+     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+       <ul class="nav navbar-nav navbar-right">
+         <li><a ui-sref='home'>Home</a></li>
+         <li><a ui-sref='users'>Users</a></li>
+         <li><a ui-sref='songs'>Songs</a></li>
+         <li><a ui-sref='locations'>Find songs</a></li>
+         <li><a ui-sref="location">Add a song</a></li>
+       </ul>
+     </div>
+    </div>
     </nav>
-  </section>
-  <main ui-view></main>
+  </span>
+  <div class="container">
+    <main ui-view></main>
+  </div>
+
 </body>
 </html>
