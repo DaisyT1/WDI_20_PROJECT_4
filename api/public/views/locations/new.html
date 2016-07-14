@@ -8,12 +8,12 @@
   <div class="col-md-12"></div>
 
 <div class="col-md-4 lastChild" ng-repeat="track in controller.selectedArtist.tracks.items" ng-click="controller.songClicked($index)">
-  <span ng-click="controller.selectTrack(track)" ng-show="goCats">
-    <img ng-src="{{track.album.images[1].url}}" ng-class="{ 'selected-class-name' : $index == controller.selectedSong }" >
-      <div class="card-block">
-       <span class="card-text">{{track.name}} by {{track.artists[0].name}}</span>
-     </div>
-  </span>
+  <div class="card-box">
+    <span ng-click="controller.selectTrack(track)" ng-show="goCats">
+      <img ng-src="{{track.album.images[1].url}}" ng-class="{ 'selected-class-name' : $index == controller.selectedSong }" >
+         <p class="card-text">{{track.name}} by {{track.artists[0].name}}</p>
+    </span>
+  </div>
 </div>
 <div class="col-md-12"></div>
 <div class="col-md-6" ng-hide="message">

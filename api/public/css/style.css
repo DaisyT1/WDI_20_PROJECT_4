@@ -28,9 +28,18 @@ h1, h2, h3, h4, h5, p, button, a, input.btn {
   margin-top: 100px;
 }
 
+.card-box {
+  border: 2px gray solid;
+  width: 304px;
+  margin-bottom: 10px;
+  height: 344px;
+  max-height: 344px;
+}
+
 .selected {
   border: 2px red solid;
 }
+
 
 .mapCanvas {
   height: 400px;
