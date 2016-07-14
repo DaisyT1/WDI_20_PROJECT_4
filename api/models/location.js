@@ -1,11 +1,18 @@
 var mongoose = require('mongoose');
 
+var TrackSchema = mongoose.Schema({
+  title: String,
+  spotID: String,
+  comment: String
+},{ _id : false });
+
 var LocationSchema = mongoose.Schema({
   name: String,
-  address: String,
-  testID: String,
-  song: [{type: mongoose.Schema.ObjectId, ref: "Track"}]
-  
+  location: {
+    lat: Number,
+    lng: Number
+  },
+  song: TrackSchema
 });
 
 module.exports = mongoose.model('Location', LocationSchema);

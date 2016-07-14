@@ -1,32 +1,30 @@
 <h1>New Location</h1>
 
 <div class="col-md-8">
-  <form>
-    <input class="form-control" type="text" name="name" placeholder="Name" ng-model="vm.location.name">
-    <input class="form-control" places-auto-complete size=80 ng-model="vm.address" on-place-changed="vm.placeChanged()">
-    <input class="btn" type="submit" value="Save" ng-click="vm.addLocation()">
+  <form ng-submit="controller.saveLocation()">
+
+    <input class="form-control" type="text" name="name" placeholder="Name" ng-model="controller.newLocation.name">
+    <input class="form-control" places-auto-complete size=80  on-place-changed="controller.placeChanged()" types="{{controller.autocomplete.types}}">
+    <input class="btn" type="submit" value="Save">
+
   </form>
 </div>
+
 <div class="col-md-12">
-<ng-map center="[51.5073509, -0.12775829999998223]" zoom="12" class="mapCanvas"></ng-map>
+  <ng-map center="[51.5073509, -0.12775829999998223]" zoom="12" class="mapCanvas"></ng-map>
 </div>
 
-<section ng-controller="TracksController as tracks">
-
-<p>{{vm.location.artistName}}</p>
-<div class="col-md-8">
-  <input class="form-control" type="text" name="query" ng-model=tracks.artistName>
-  <input class="btn" type="submit" value="Search" ng-click="tracks.searchSpotify()">
-</div>
-<div class="col-md-12">
-  <ul>
-   <li ng-repeat="x in tracks.selectedArtist.tracks.items" ng-click="vm.addSongToLocation(x.id)">
-    {{x.name}} by {{x.artists[0].name}}
-   <button>Pick</button>
-   <p>{{vm.location.selectedSong}}</p>
-   </li>
+  <p>{{vm.location.artistName}}</p>
+  <div class="col-md-8">
+    <input class="form-control" type="text" name="query" ng-model=controller.artistName>
+    <input class="btn" type="submit" value="Search" ng-click="controller.searchSpotify()">
+  </div>
+  <div class="col-md-12">
+    <ul>
+      <form>
+       <li ng-repeat="track in controller.selectedArtist.tracks.items" ng-click="controller.selectTrack(track)">
+        <p>{{track.name}} by {{track.artists[0].name}}</p>
+      </li>
+    </form>
   </ul>
 </div>
-</section>
-<!-- 
-tracks.selectTrack(x.id); -->

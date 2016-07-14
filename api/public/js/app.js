@@ -1,6 +1,11 @@
 angular
   .module('project4', ['ngResource', 'ngMap', 'ui.router', 'spotify'])
-  .config(Router);
+  .config(Router)
+  .filter('trustAsResourceUrl', ['$sce', function($sce) {
+      return function(val) {
+          return $sce.trustAsResourceUrl(val);
+      };
+  }]);
 
 Router.$inject = ["$stateProvider", "$urlRouterProvider"];
 function Router($stateProvider, $urlRouterProvider) {
@@ -26,7 +31,7 @@ function Router($stateProvider, $urlRouterProvider) {
   .state('location', {
     url: "/locations/new",
     templateUrl: "../views/locations/new.html",
-    controller: "LocationsController as vm"
+    controller: "NewController as controller"
   })
   .state('login', {
     url: "/login",

@@ -1,8 +1,15 @@
 <h1>Locations</h1>
 
 <div class="col-md-12">
-  <map center="[51.5073509, -0.12775829999998223]" zoom="8" class="mapCanvas" zoom-to-include-markers="true">
-        <marker ng-repeat="location in vm.all" position="pos: {{ location.address }}" on-click="showInfoWindow(event, 'marker-info')">
+
+  <map center="current-location" 
+       geo-fallback-center="[50.455 , 0]"
+       geo-callback="vm.locationFound()"
+       zoom="8" 
+       class="mapCanvas" 
+       zoom-to-include-markers="false">
+
+        <marker ng-repeat="location in vm.all" position="{{[location.location.lat, location.location.lng]}}" on-click="showInfoWindow(event, 'marker-info')">
         <info-window id="marker-info">
           <div id="marker-info"
           <h4>{{location.song[0]}}</h4>
@@ -19,8 +26,11 @@
     <li ng-repeat="location in vm.all">
       <ul>
         <li>{{ location.name }}</li>
-        <li><a ng-href="https://open.spotify.com/track/{{location.song[0].spotID}}" target="_blank">Play on spotify</a></li>
+        <li><a ng-href="https://open.spotify.com/track/{{location.song.spotID}}" target="_blank">Play on spotify</a></li>
       </ul>
     </li>
   </ul>
 </div>
+
+
+<iframe ng-src="{{vm.playlistURL | trustAsResourceUrl}}" frameborder="0" allowtransparency="true" width="100%" height="400px"></iframe>

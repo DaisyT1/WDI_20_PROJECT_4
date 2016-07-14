@@ -1,9 +1,9 @@
 angular
   .module('project4')
-  .factory('Location', Location);
+  .factory('LocationResource', LocationResource);
 
 Location.$inject = ['$resource'];
-function Location($resource){
+function LocationResource($resource){
 
   return $resource(
     'http://localhost:3000/locations/:id', {id: '@_id'},

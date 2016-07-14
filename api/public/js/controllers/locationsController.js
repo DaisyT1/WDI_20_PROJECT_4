@@ -1,17 +1,18 @@
 angular.module('project4')
   .controller('LocationsController', LocationsController);
 
-LocationsController.$inject = ['NgMap', 'Location', 'Track']
-function LocationsController(NgMap, Location, Track){
+LocationsController.$inject = ['NgMap', 'LocationResource', 'Track' , '$sce']
+function LocationsController(NgMap, LocationResource, Track , $sce){
 
   var self = this;
 
-  self.all          = Location.query();
-  self.location     = null;
-  self.addLocation  = addLocation;
-  self.placeChanged = placeChanged;
+  self.all            = [];
+  self.addLocation    = addLocation;
+  self.placeChanged   = placeChanged;
+  self.location       = null;
   self.selectedSongId = null;
-
+  self.locationFound = locationFound;
+  self.playlistURL;;
 
 
   var vm = this;
@@ -20,35 +21,42 @@ function LocationsController(NgMap, Location, Track){
     vm.map = map;
   });
 
+  function locationFound() {
 
-  vm.clicked = function() {
-      alert('Clicked a link inside infoWindow');
-    };
 
-    vm.shops = [
-      {id:'foo', name: 'FOO SHOP', position:[41,-87]},
-      {id:'bar', name: 'BAR SHOP', position:[42,-86]}
-    ];
-    vm.shop = vm.shops[0];
 
-    vm.showDetail = function(e, shop) {
-      vm.shop = shop;
-      vm.map.showInfoWindow('infoWindow', shop.id);
-    };
+      var bounds = vm.map.getBounds();
+      var ne = bounds.getNorthEast(); // LatLng of the north-east corner
+      var sw = bounds.getSouthWest(); // LatLng of the south-west corder
 
-    vm.hideDetail = function() {
-      vm.map.hideInfoWindow('infoWindow');
-    };
+      self.all = LocationResource.query({top:ne.lat() , bottom: sw.lat() , left:sw.lng() , right:ne.lng()} , function(){
 
+       self.getPlaylistURL();
+
+      });
+
+  }
 
   function addLocation() {
-    self.location.testID = self.selectedSongId; 
-    self.location.address = self.address
-    // self.location.song
+    self.location.address = self.address;
     Location.save({ location: self.location }), function(response){
-      console.log(response)
       self.location = null;
     }
+  }
+
+  self.getPlaylistURL = function() {
+
+      var url = "https://embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE";
+
+      angular.forEach(self.all , function(item, index){ 
+
+          if(item.song)
+            url += item.song.spotID + ",";
+
+      });
+
+      self.playlistURL = url;
+
   }
 
   function placeChanged() {
@@ -56,10 +64,6 @@ function LocationsController(NgMap, Location, Track){
     self.place = this.getPlace();
     self.map.setCenter(self.place.geometry.location);
   }
-
-  NgMap.getMap().then(function(map) {
-    self.map = map;
-  });
 
   vm.addSongToLocation = function(id){
     self.selectedSongId = id;
