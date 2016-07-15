@@ -9,6 +9,7 @@ body, .ng-scope{
 
 h1, h2, h3, h4, h5, p, button, a, input.btn {
   font-family: 'Titillium Web', sans-serif;
+  font-weight: normal;
 }
 
 .main{
@@ -43,6 +44,7 @@ h1, h2, h3, h4, h5, p, button, a, input.btn {
 
 .mapCanvas {
   height: 400px;
+  margin-bottom: 10px;
 }
 
 .text-card{
@@ -67,6 +69,6 @@ h1, h2, h3, h4, h5, p, button, a, input.btn {
 }
 
 .selected-class-name {
- border: 2px black solid;
+ border: 3px green solid;
  margin: 0;
 }

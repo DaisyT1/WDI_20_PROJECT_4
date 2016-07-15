@@ -1,4 +1,4 @@
-<h1>Locations</h1>
+<h2>Locations</h2>
 
 <div class="col-md-8">
   <div class="map">
@@ -11,10 +11,12 @@
 
     <marker ng-repeat="location in vm.all" position="{{[location.location.lat, location.location.lng]}}" on-click="showInfoWindow(event, 'marker-info')">
       <info-window id="marker-info">
+      <li ng-repeat="location in vm.all">
         <ul>
           <li>{{ location.name }}</li>
           <li><a ng-href="https://open.spotify.com/track/{{location.song.spotID}}" target="_blank">Play on spotify</a></li>
         </ul>
+      </li>
       </info-window>
     </marker>
   </map>
