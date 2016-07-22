@@ -12,7 +12,7 @@ angular.module('project4')
 
   function getUsers(){
     $http
-    .get("http://localhost:3000/users").then(function(response){
+    .get("/users").then(function(response){
     self.all = response.data.users;
       // console.log(self)
       // console.log(self.all[0].locations[0])
