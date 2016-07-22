@@ -41,7 +41,7 @@ function LocationsController(NgMap, LocationResource, Track , $sce){
 
   self.getPlaylistURL = function() {
 
-    var url = "https://embed.spotify.com/?uri=spotify:trackset:SET";
+    var url = "https://embed.spotify.com/?uri=spotify:trackset:";
       angular.forEach(self.all , function(item, index){ 
         if(item.song)
         url += item.song.spotID + ",";
