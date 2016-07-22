@@ -105,7 +105,7 @@ app.get("/callback" , function(req,res){
 
                 res.cookie("user_id" , body.id);
 
-                res.redirect("http://localhost:3000/");
+                res.redirect("https://frozen-inlet-88275.herokuapp.com/#/locations");
             });
            
           } else {
