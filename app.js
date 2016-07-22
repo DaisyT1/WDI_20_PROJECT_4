@@ -23,7 +23,7 @@ app.use(cookieParser());
 
 var client_id = "fbc794752036440baf1be8e0b9a40f30";
 var client_secret = "3b3b3f1d7537451db861e61bbe9bfb5b";
-var redirect_uri = "http://localhost:3000/callback/";
+var redirect_uri = "https://frozen-inlet-88275.herokuapp.com/callback";
 
 var stateKey = "spotify_auth_state";
 
