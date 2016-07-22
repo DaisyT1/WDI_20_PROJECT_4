@@ -6,7 +6,7 @@ Track.$inject = ['$resource'];
 function Track($resource){
 
   return $resource(
-    'http://localhost:3000/tracks/:id', {id: '@_id'},
+    '/tracks/:id', {id: '@_id'},
     { 'get':       { method: 'GET' },
       'save':      { method: 'POST' },
       'query':     { method: 'GET', isArray: true},
