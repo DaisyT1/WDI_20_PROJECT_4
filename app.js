@@ -9,7 +9,8 @@ var routes     = require('./config/routes');
 var request = require('request'); // "Request" library
 
 var mongoose   = require('mongoose');
-mongoose.connect('mongodb://localhost/project4');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/project4');
+
 
 app.use(express.static('public'));
 app.use(cors());
@@ -134,4 +135,4 @@ var generateRandomString = function(length) {
   return text;
 };
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
