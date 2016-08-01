@@ -7,18 +7,24 @@
          geo-callback="vm.locationFound()"
          zoom="8" 
          class="mapCanvas" 
-         zoom-to-include-markers="false">
+         zoom-to-include-markers="false"
+         default-style="true">
 
-    <marker ng-repeat="location in vm.all" position="{{[location.location.lat, location.location.lng]}}" on-click="showInfoWindow(event, 'marker-info')">
-      <info-window id="marker-info">
-      <li ng-repeat="location in vm.all">
-        <ul>
-          <li>{{ location.name }}</li>
-          <li><a ng-href="https://open.spotify.com/track/{{location.song.spotID}}" target="_blank">Play on spotify</a></li>
-        </ul>
-      </li>
-      </info-window>
+    <marker ng-repeat="location in vm.all" 
+    position="{{[location.location.lat, location.location.lng]}}" 
+    on-click="vm.showDetail(location)"
+    id='{{location.id}}'>
     </marker>
+
+    <info-window id="marker-info" >
+       <div ng-non-bindable="">
+          <ul>
+            <li>{{ vm.location.name }}</li>
+            <li>{{ vm.location.song.spotID }}</li>
+            <li><a ng-href="https://open.spotify.com/track/{{location.song.spotID}}" target="_blank">Play on spotify</a></li>
+          </ul>
+       </div>
+    </info-window>
   </map>
 </div>
 </div>
@@ -36,7 +42,9 @@
       </ul>
     </li>
   </ul>
-</div> -->
+</div>
+
+<h1>{{vm.all[0]}}</h1> -->
 
 <!-- <div id="marker-info">
 <h4>{{location.name}}</h4>

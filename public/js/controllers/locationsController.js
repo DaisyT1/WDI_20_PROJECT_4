@@ -61,4 +61,15 @@ function LocationsController(NgMap, LocationResource, Track , $sce){
     console.log(self.selectedSongId)
   }
 
+  vm.location = vm.all[0]
+
+  vm.showDetail = function(e, location) {
+    vm.location = location;
+    vm.map.showInfoWindow('marker-info', this);
+  };
+
+  vm.hideDetail = function() {
+    vm.map.hideInfoWindow('marker-info');
+  };
+
 } 
