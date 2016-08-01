@@ -9,13 +9,14 @@ This app was written using a **MEAN** stack.
 
 package.json:
 
-```"body-parser": "^1.15.1"
-    "bower": "^1.7.9"
-    "cookie-parser": "^1.4.3"
-    "cors": "^2.7.1"
-    "express": "^4.14.0"
-    "mongoose": "^4.5.3"
-    "morgan": "^1.7.0"
+```
+"body-parser": "^1.15.1"
+"bower": "^1.7.9"
+"cookie-parser": "^1.4.3"
+"cors": "^2.7.1"
+"express": "^4.14.0"
+"mongoose": "^4.5.3"
+"morgan": "^1.7.0"
 ```
 
 APIs:
