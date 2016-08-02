@@ -42,13 +42,13 @@ function LocationsController(NgMap, LocationResource, Track , $sce, Spotify){
   }
 
   self.getPlaylistURL = function() {
-    var white = "&theme=white"
+    // var white = "&theme=white"
     var url = "https://embed.spotify.com/?uri=spotify:trackset:";
       angular.forEach(self.all , function(item, index){ 
         if(item.song)
         url += item.song.spotID + ",";
     });
-    self.playlistURL = url + white;
+    self.playlistURL = url;
   }
 
   function placeChanged() {
@@ -80,5 +80,9 @@ function LocationsController(NgMap, LocationResource, Track , $sce, Spotify){
   vm.hideDetail = function() {
     vm.map.hideInfoWindow('marker-info');
   };
+
+  vm.style = [{"featureType":"all","elementType":"all","stylers":[{"saturation":-100},{"gamma":0.5}]}];
+
+  vm.height = "400px";
 
 } //END

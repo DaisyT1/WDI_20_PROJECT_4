@@ -2,9 +2,10 @@ html{
   width: 100%;
 }
 
-body, .ng-scope{
+.ng-scope{
   min-height: 100%;
   width: 100%;
+  background-color: blue;
 }
 
 h1, h2, h3, h4, h5, p, button, a, input.btn {
@@ -12,10 +13,9 @@ h1, h2, h3, h4, h5, p, button, a, input.btn {
   font-weight: normal;
 }
 
-.main{
+.main {
   background-image: url('./images/brandsound.png');
   height: 280px;
-  margin-top: -70px;
 }
 
 .center{
@@ -69,4 +69,13 @@ h1, h2, h3, h4, h5, p, button, a, input.btn {
 
 .playlist {
   height: 300px;
+}
+
+.container-fluid {
+  background-color: #1d1d1d;
+}
+
+#navbar {
+  border: 0;
+  margin-bottom: 0px;
 }
