@@ -42,19 +42,20 @@ function LocationsController(NgMap, LocationResource, Track , $sce, Spotify){
   }
 
   self.getPlaylistURL = function() {
-
+    var white = "&theme=white"
     var url = "https://embed.spotify.com/?uri=spotify:trackset:";
       angular.forEach(self.all , function(item, index){ 
         if(item.song)
         url += item.song.spotID + ",";
     });
-    self.playlistURL = url;
+    self.playlistURL = url + white;
   }
 
   function placeChanged() {
     console.log("Running");
     self.place = this.getPlace();
     self.map.setCenter(self.place.geometry.location);
+    self.locationFound()
   }
 
   vm.addSongToLocation = function(id){
@@ -62,18 +63,6 @@ function LocationsController(NgMap, LocationResource, Track , $sce, Spotify){
     console.log("THE ID IS:")
     console.log(self.selectedSongId)
   }
-
-  // Spotify
-  //   .createPlaylist('1176458919', { name: 'Awesome Mix Vol. 1' })
-  //   .then(function (data) {
-  //    console.log('playlist created');
-  //   });
-
-  // Spotify
-  //   .addPlaylistTracks('1176458919', '2TkWjGCu8jurholsfdWtG4', 'spotify:track:4iV5W9uYEdYUVa79Axb7Rh, spotify:track:1301WleyT98MSxVHPZCA6M')
-  //   .then(function (data) {
-  //     console.log('tracks added to playlist');
-  //   });
 
   vm.location = vm.all[0]
 
