@@ -18,11 +18,10 @@
 
     <info-window id="marker-info" >
        <div ng-non-bindable="">
-          <ul>
-            <li>{{ vm.location.name }}</li>
-            <li>{{ vm.location.song.spotID }}</li>
-            <li><a ng-href="https://open.spotify.com/track/{{location.song.spotID}}" target="_blank">Play on spotify</a></li>
-          </ul>
+            <p>{{ vm.selectedArtist.name }}</p>
+            <p>{{ vm.selectedArtist.artists[0].name }}</p>
+            <p>{{ vm.location.name }}</p>
+            <p><a ng-href="https://open.spotify.com/track/{{vm.location.song.spotID}}" target="_blank">Listen on spotify</a></p>
        </div>
     </info-window>
   </map>

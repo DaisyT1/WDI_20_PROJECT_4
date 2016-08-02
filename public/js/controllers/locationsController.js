@@ -1,8 +1,8 @@
 angular.module('project4')
   .controller('LocationsController', LocationsController);
 
-LocationsController.$inject = ['NgMap', 'LocationResource', 'Track' , '$sce']
-function LocationsController(NgMap, LocationResource, Track , $sce){
+LocationsController.$inject = ['NgMap', 'LocationResource', 'Track' , '$sce', 'Spotify']
+function LocationsController(NgMap, LocationResource, Track , $sce, Spotify){
 
   var self = this;
 
@@ -12,10 +12,12 @@ function LocationsController(NgMap, LocationResource, Track , $sce){
   self.location       = null;
   self.selectedSongId = null;
   self.locationFound = locationFound;
-  self.playlistURL;;
+  self.playlistURL;
+
 
 
   var vm = this;
+  vm.selectedArtist = '';
 
   NgMap.getMap().then(function(map) {
     vm.map = map;
@@ -66,10 +68,16 @@ function LocationsController(NgMap, LocationResource, Track , $sce){
   vm.showDetail = function(e, location) {
     vm.location = location;
     vm.map.showInfoWindow('marker-info', this);
+    Spotify.getTrack(location.song.spotID).then(function (data) {
+      vm.selectedArtist = data;
+      // console.log(vm.selectedArtist)
+      // console.log(data);
+    });
+    // console.log(vm.selectedArtist.name)
   };
 
   vm.hideDetail = function() {
     vm.map.hideInfoWindow('marker-info');
   };
 
-} 
+} //END
