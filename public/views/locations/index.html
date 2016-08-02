@@ -1,7 +1,5 @@
-<h2>Locations</h2>
-
 <div class="col-md-8">
-  <div class="map">
+  <div class="map" >
     <map center="current-location" 
          geo-fallback-center="[50.455 , 0]"
          geo-callback="vm.locationFound()"
@@ -9,6 +7,9 @@
          class="mapCanvas" 
          zoom-to-include-markers="false"
          default-style="true">
+
+<!--    <input places-auto-complete size=80
+       on-place-changed="vm.placeChanged()" /> -->
 
     <marker ng-repeat="location in vm.all" 
     position="{{[location.location.lat, location.location.lng]}}" 
@@ -18,9 +19,9 @@
 
     <info-window id="marker-info" >
        <div ng-non-bindable="">
-            <p>{{ vm.selectedArtist.name }}</p>
-            <p>{{ vm.selectedArtist.artists[0].name }}</p>
-            <p>{{ vm.location.name }}</p>
+            <h5>{{ vm.selectedArtist.name }}</h5>
+            <p>by: {{ vm.selectedArtist.artists[0].name }}</p>
+            <!-- <p>{{ vm.location.name }}</p> -->
             <p><a ng-href="https://open.spotify.com/track/{{vm.location.song.spotID}}" target="_blank">Listen on spotify</a></p>
        </div>
     </info-window>
@@ -28,8 +29,22 @@
 </div>
 </div>
 <div class="col-md-4">
-  <iframe ng-src="{{vm.playlistURL | trustAsResourceUrl}}" frameborder="0" allowtransparency="true" width="100%" height="400px"></iframe>
+  <iframe class="playlist" ng-src="{{vm.playlistURL | trustAsResourceUrl}}" frameborder="0" allowtransparency="true" width="100%" height="400px"></iframe>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- <a href="http://open.spotify.com/trackset/SETaidjsfoiasjdfoiajsdj,3WibbMr6canxRJXhNtAvLU,7ccI9cStQbQdystvc6TvxD,1j3gNx31bvz2DBuOp0M9LK,5PMNu7kMZ4msbxiKnDTOt0,"><button>Add this playlist</button></a> -->
 <!-- <div>

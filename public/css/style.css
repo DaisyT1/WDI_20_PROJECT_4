@@ -41,12 +41,6 @@ h1, h2, h3, h4, h5, p, button, a, input.btn {
   border: 2px red solid;
 }
 
-
-.mapCanvas {
-  height: 400px;
-  margin-bottom: 10px;
-}
-
 .text-card{
   text-overflow:ellipsis;
 }
@@ -71,4 +65,8 @@ h1, h2, h3, h4, h5, p, button, a, input.btn {
 .selected-class-name {
  border: 3px green solid;
  margin: 0;
+}
+
+.playlist {
+  height: 300px;
 }

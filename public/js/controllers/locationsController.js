@@ -63,6 +63,18 @@ function LocationsController(NgMap, LocationResource, Track , $sce, Spotify){
     console.log(self.selectedSongId)
   }
 
+  // Spotify
+  //   .createPlaylist('1176458919', { name: 'Awesome Mix Vol. 1' })
+  //   .then(function (data) {
+  //    console.log('playlist created');
+  //   });
+
+  // Spotify
+  //   .addPlaylistTracks('1176458919', '2TkWjGCu8jurholsfdWtG4', 'spotify:track:4iV5W9uYEdYUVa79Axb7Rh, spotify:track:1301WleyT98MSxVHPZCA6M')
+  //   .then(function (data) {
+  //     console.log('tracks added to playlist');
+  //   });
+
   vm.location = vm.all[0]
 
   vm.showDetail = function(e, location) {
@@ -70,7 +82,7 @@ function LocationsController(NgMap, LocationResource, Track , $sce, Spotify){
     vm.map.showInfoWindow('marker-info', this);
     Spotify.getTrack(location.song.spotID).then(function (data) {
       vm.selectedArtist = data;
-      // console.log(vm.selectedArtist)
+      console.log(vm.selectedArtist)
       // console.log(data);
     });
     // console.log(vm.selectedArtist.name)
