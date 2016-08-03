@@ -1,11 +1,60 @@
 <div class="container position">
-<h2>Add a track</h2>
+<h2 class="brand2 col-md-12">Pick a track</h2>
+
+  <div class="artistSearch">
+    <div class="col-md-8 col-xs-8">
+      <input class="form-control" type="text" name="query" ng-model="controller.artistName" placeholder="Search Spotify by artist, song or album">
+    </div>
+    <div class="col-md-4 col-xs-4">
+      <input class="btn" type="submit" value="Search" ng-click="controller.searchSpotify(); goCats=true">
+    </div>
+  </div>
+  <div class="col-md-12"></div>
+
+<div class="col-md-4 lastChild" ng-repeat="track in controller.selectedArtist.tracks.items">
+  <div class="card-box" ng-show="goCats">
+    <span ng-click="controller.selectTrack(track)" ng-show="goCats">
+      <img ng-src="{{track.album.images[1].url}}" ng-class="{ 'selected-class-name' : $index == controller.selectedSong }" ng-click="controller.songClicked($index)">
+         <p class="card-text">{{track.name}} by {{track.artists[0].name}}</p>
+    </span>
+  </div>
+</div>
+
+<h2 class="col-md-12 col-xs-12 brand2">Pin this track to a location</h2>
+  <form ng-submit="controller.saveLocation()">
+  <div class="col-md-8 col-xs-8">
+    <input class="form-control" 
+    places-auto-complete size=80  
+    on-place-changed="controller.placeChanged()" 
+    types="{{controller.autocomplete.types}}" />
+  </div>
+    <div class="col-md-4 col-xs-4">
+      <input class="btn saveBtn" type="submit" value="Save" ng-click="goCats=false ; message=true">
+    </div>
+  </form>
+<div class="col-md-12"></div>
+
+    <div class="col-md-8" ng-hide="message">
+      <map center="[51.5073509, -0.12775829999998223]" 
+      zoom="12" 
+      class="mapCanvas"
+      styles="{{ controller.style }}"></map>
+
+</div>
+
+  <div ng-show="message">
+    <h1 class="added col-md-12 col-xs-12">Track has been added!</h1>
+  </div>
+</div>
+
+<!-- <div class="container position">
+<h2>Pick a track</h2>
   
   <div class="artistSearch">
-    <div class="col-md-8">
-      <input class="form-control" type="text" name="query" ng-model="controller.artistName" placeholder="Search spotify by artist, song or album">
+    <div class="col-md-8 col-xs-8">
+      <input class="form-control" type="text" name="query" ng-model="controller.artistName" placeholder="Search Spotify by artist, song or album">
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 col-xs-4">
       <input class="btn" type="submit" value="Search" ng-click="controller.searchSpotify(); goCats=true">
     </div>
   </div>
@@ -34,3 +83,4 @@
 <h3 >Song has been added</h3>
 </div>
 </div>
+ -->

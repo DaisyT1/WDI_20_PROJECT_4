@@ -65,6 +65,12 @@ h1, h2, h3, h4, h5, p, button, a, input.btn {
   padding-left: 10%;
 }
 
+.brand2{
+  font-family: 'Titillium Web', sans-serif;
+  padding: 10px;
+  padding-left: 10%;
+}
+
 .selected-class-name {
  border: 3px green solid;
  margin: 0;
@@ -92,6 +98,12 @@ h1, h2, h3, h4, h5, p, button, a, input.btn {
 .btn {
   margin-top: 20px;
   margin-bottom: 20px;
+
+}
+
+.saveBtn{
+  background-color: #03e254;  
+  padding-left: 10px;
 }
 
 #container{
@@ -103,7 +115,15 @@ h1, h2, h3, h4, h5, p, button, a, input.btn {
 }
 
 .position {
-  padding-top: 6%;
+  padding-top: 3%;
+}
+
+.added {
+  color: #03e254;
+  padding-top: 4%;
+  text-align: center;
+  font-family: 'Titillium Web', sans-serif;
+  padding: 10px;
 }
 
 @media screen and (max-width: 990px) {

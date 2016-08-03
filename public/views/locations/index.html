@@ -1,8 +1,12 @@
-<div class="container">
-<div class="col-md-8 position">
+<div class="container position">
+
+<h2 class="col-md-12 brand2">Search places, find music</h2>
+<div class="col-md-8">
 <input places-auto-complete size=80
     on-place-changed="vm.placeChanged()" 
     class="form-control"
+    placeholder="Search"
+    zoom="1" 
     id="indexInput" />
 </div>
  <div class="col-md-12"></div>
@@ -17,7 +21,7 @@
          on-click="vm.locationFound()"
          zoom-to-include-markers="false"
          default-style="true"
-         styles="{{vm.style }}">
+         styles="{{ vm.style }}">
 
     <marker ng-repeat="location in vm.all" 
     position="{{[location.location.lat, location.location.lng]}}" 

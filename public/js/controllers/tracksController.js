@@ -1,18 +1,22 @@
 angular.module('project4')
   .controller('TracksController', TracksController);
 
-  TracksController.$inject = ["$http" , "$sce", "Spotify", "Track", "$scope"];
-  function TracksController($http , $sce, Spotify, Track, $scope){
+  TracksController.$inject = ['NgMap', "$http" , "$sce", "Spotify", "Track", "$scope"];
+  function TracksController(NgMap, $http , $sce, Spotify, Track, $scope){
    
     var self = this;
-    this.searchSpotify = searchSpotify;
-    this.createPlaylist  = createPlaylist;
-    this.saveTrack = saveTrack;
-    this.artistName = "";
-    this.selectedArtist = '';
-    this.selectTrack = selectTrack;
-    this.selectedId = null;
+    this.searchSpotify    = searchSpotify;
+    this.createPlaylist   = createPlaylist;
+    this.saveTrack        = saveTrack;
+    this.artistName       = "";
+    this.selectedArtist   = '';
+    this.selectTrack      = selectTrack;
+    this.selectedId       = null;
+    this.placeChanged     = placeChanged;
 
+  NgMap.getMap().then(function(map) {
+    vm.map = map;
+  });
 
   function addSong() {
     self.tracks.spotId = self.selectedId;
@@ -40,5 +44,11 @@ angular.module('project4')
      .then(function (data) {
       console.log('playlist created');
     });
+  }
+
+  function placeChanged() {
+    console.log("Running");
+    self.place = this.getPlace();
+    self.map.setCenter(self.place.geometry.location);
   }
 }
