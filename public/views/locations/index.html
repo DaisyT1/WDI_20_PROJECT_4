@@ -1,8 +1,9 @@
 <div class="container">
-<div class="col-md-8">
+<div class="col-md-8 position">
 <input places-auto-complete size=80
     on-place-changed="vm.placeChanged()" 
-    class="form-control"/>
+    class="form-control"
+    id="indexInput" />
 </div>
  <div class="col-md-12"></div>
 
@@ -11,8 +12,9 @@
     <map center="current-location" 
          geo-fallback-center="[50.455 , 0]"
          geo-callback="vm.locationFound()"
-         zoom="7" 
+         zoom="8" 
          class="mapCanvas" 
+         on-click="vm.locationFound()"
          zoom-to-include-markers="false"
          default-style="true"
          styles="{{vm.style }}">
@@ -39,24 +41,3 @@
 </div>
 
 </div>
-
-
-
-
-<!-- <a href="http://open.spotify.com/trackset/SETaidjsfoiasjdfoiajsdj,3WibbMr6canxRJXhNtAvLU,7ccI9cStQbQdystvc6TvxD,1j3gNx31bvz2DBuOp0M9LK,5PMNu7kMZ4msbxiKnDTOt0,"><button>Add this playlist</button></a> -->
-<!-- <div>
-  <ul id="locations">
-    <li ng-repeat="location in vm.all">
-      <ul>
-        <li>{{ location.name }}</li>
-        <li><a ng-href="https://open.spotify.com/track/{{location.song.spotID}}" target="_blank">Play on spotify</a></li>
-      </ul>
-    </li>
-  </ul>
-</div>
-
-<h1>{{vm.all[0]}}</h1> -->
-
-<!-- <div id="marker-info">
-<h4>{{location.name}}</h4>
-</div> -->

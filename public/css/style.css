@@ -5,7 +5,6 @@ html{
 .ng-scope{
   min-height: 100%;
   width: 100%;
-  background-color: blue;
 }
 
 h1, h2, h3, h4, h5, p, button, a, input.btn {
@@ -25,8 +24,10 @@ h1, h2, h3, h4, h5, p, button, a, input.btn {
   transform: translateY(-50%);
 }
 
-.top {
+.containerText {
   margin-top: 100px;
+  z-index: 999;
+  top: 50%;
 }
 
 .card-box {
@@ -54,12 +55,14 @@ h1, h2, h3, h4, h5, p, button, a, input.btn {
 }
 
 .loginButton{
-  height: 35px;
+  height: 38px;
   width: 200px;
 }
 
 .brand{
   font-family: 'Titillium Web', sans-serif;
+  padding: 20px;
+  padding-left: 10%;
 }
 
 .selected-class-name {
@@ -78,4 +81,23 @@ h1, h2, h3, h4, h5, p, button, a, input.btn {
 #navbar {
   border: 0;
   margin-bottom: 0px;
+}
+
+.form-control {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+#container{
+  width:100%;
+  min-height: 600px;
+/*  padding: 100;*/
+  background-image: url('./images/tape.jpeg') ;
+  background-size: cover;
+  background-position: center center;
+}
+
+.position {
+  padding-top: 6%;
 }
