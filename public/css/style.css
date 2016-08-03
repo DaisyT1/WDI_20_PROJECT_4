@@ -92,7 +92,6 @@ h1, h2, h3, h4, h5, p, button, a, input.btn {
 #container{
   width:100%;
   min-height: 600px;
-/*  padding: 100;*/
   background-image: url('./images/tape.jpeg') ;
   background-size: cover;
   background-position: center center;
@@ -100,4 +99,13 @@ h1, h2, h3, h4, h5, p, button, a, input.btn {
 
 .position {
   padding-top: 6%;
+}
+
+@media screen and (max-width: 990px) {
+     .playlist {
+       min-height: 400px;
+     }
+     .playlist {
+      margin-top: 5%;
+     }
 }
