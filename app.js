@@ -10,7 +10,7 @@ var request = require('request'); // "Request" library
 
 var mongoose   = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/project4');
-
+heroku pg: reset DATABASE_URL
 
 app.use(express.static('public'));
 app.use(cors());
