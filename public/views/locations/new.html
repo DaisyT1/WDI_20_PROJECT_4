@@ -1,11 +1,14 @@
 <div class="container position">
 <h2>Add a track</h2>
-
-<p>{{vm.location.artistName}}</p>
+  
+  <div class="artistSearch">
     <div class="col-md-8">
       <input class="form-control" type="text" name="query" ng-model="controller.artistName" placeholder="Search spotify by artist, song or album">
+    </div>
+    <div class="col-md-4">
       <input class="btn" type="submit" value="Search" ng-click="controller.searchSpotify(); goCats=true">
     </div>
+  </div>
   <div class="col-md-12"></div>
 
 <div class="col-md-4 lastChild" ng-repeat="track in controller.selectedArtist.tracks.items">
