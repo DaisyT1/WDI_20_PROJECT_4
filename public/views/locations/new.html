@@ -20,7 +20,7 @@
 
 <div class="col-md-4 lastChild" ng-repeat="track in controller.selectedArtist.tracks.items">
   <div class="card-box" ng-show="goCats">
-    <span ng-click="controller.selectTrack(track)" ng-show="goCats">
+    <span ng-click="controller.selectTrack(track)" ng-show="goCats" class="card-box">
       <img ng-src="{{track.album.images[1].url}}" ng-class="{ 'selected-class-name' : $index == controller.selectedSong }" ng-click="controller.songClicked($index)">
          <p class="card-text">{{track.name}} by {{track.artists[0].name}}</p>
     </span>
