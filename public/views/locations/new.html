@@ -2,11 +2,18 @@
 <h2 class="brand2 col-md-12">Pick a track</h2>
 
   <div class="artistSearch">
-    <div class="col-md-8 col-xs-8">
-      <input class="form-control" type="text" name="query" ng-model="controller.artistName" placeholder="Search Spotify by artist, song or album">
+    <div class="col-md-8 searchSong">
+      <input class="form-control" 
+      type="text" 
+      name="query" 
+      ng-model="controller.artistName" 
+      placeholder="Search Spotify by artist, song or album">
     </div>
-    <div class="col-md-4 col-xs-4">
-      <input class="btn" type="submit" value="Search" ng-click="controller.searchSpotify(); goCats=true">
+    <div class="col-md-4 searchSongBtn">
+      <input class="btn" 
+      type="submit" 
+      value="Search" 
+      ng-click="controller.searchSpotify(); goCats=true">
     </div>
   </div>
   <div class="col-md-12"></div>
@@ -22,13 +29,13 @@
 
 <h2 class="col-md-12 col-xs-12 brand2">Pin this track to a location</h2>
   <form ng-submit="controller.saveLocation()">
-  <div class="col-md-8 col-xs-8">
+  <div class="col-md-8">
     <input class="form-control" 
     places-auto-complete size=80  
     on-place-changed="controller.placeChanged()" 
     types="{{controller.autocomplete.types}}" />
   </div>
-    <div class="col-md-4 col-xs-4">
+    <div class="col-md-4 searchSongBtn">
       <input class="btn saveBtn" type="submit" value="Save" ng-click="goCats=false ; message=true">
     </div>
   </form>

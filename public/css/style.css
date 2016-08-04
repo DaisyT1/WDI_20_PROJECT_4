@@ -2,6 +2,14 @@ html{
   width: 100%;
 }
 
+input, input:before, input:after {
+     -webkit-user-select: initial;
+     -khtml-user-select: initial;
+     -moz-user-select: initial;
+     -ms-user-select: initial;
+     user-select: initial;
+    } 
+
 .ng-scope{
   min-height: 100%;
   width: 100%;
@@ -126,9 +134,25 @@ h1, h2, h3, h4, h5, p, button, a, input.btn {
   padding: 10px;
 }
 
+/*.searchSong{
+  width: 60%;
+}
+
+.searchSongBtn{
+  width: 40%;
+  display: inline;
+}*/
+
 @media screen and (max-width: 990px) {
      .playlist {
       min-height: 400px;
       margin-top: 5%;
+     }
+
+     .searchSongBtn {
+      float: right;
+      position: relative;
+      z-index: 10;
+      padding-bottom: 2%
      }
 }
