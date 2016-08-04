@@ -6,7 +6,6 @@
     on-place-changed="vm.placeChanged()" 
     class="form-control"
     placeholder="Search"
-    zoom="1" 
     id="indexInput" />
 </div>
  <div class="col-md-12"></div>
@@ -16,7 +15,7 @@
     <map center="current-location" 
          geo-fallback-center="[50.455 , 0]"
          geo-callback="vm.locationFound()"
-         zoom="10"
+         zoom="12"
          class="mapCanvas" 
          on-click="vm.locationFound()"
          zoom-to-include-markers="false"
